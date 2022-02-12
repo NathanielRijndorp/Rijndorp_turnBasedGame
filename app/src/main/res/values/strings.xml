@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Rijndorp_turnBasedGame</string>
+    <string name="character_mp">Character MP</string>
+    <string name="skill2">skill2</string>
+    <string name="monster_mp">Monster MP</string>
+    <string name="monster_name">Monster Name</string>
+    <string name="combatlog" />
+    <string name="my_character">My Character</string>
+    <string name="skill1">skill1</string>
+    <string name="first_turn">First Turn</string>
+    <string name="character_hp">Character HP</string>
+    <string name="monster_hp">Monster HP</string>
+    <string name="hero_damage">Hero Damage</string>
+    <string name="monster_damage">Monster Damage</string>
+</resources>

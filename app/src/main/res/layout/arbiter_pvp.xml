@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/arena"
+    tools:context=".ArbiterVildred">
+
+    <TextView
+        android:id="@+id/txtHeroName"
+        android:shadowColor="#000000"
+        android:shadowDx="1.5"
+        android:shadowDy="1.3"
+        android:shadowRadius="1.6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="148dp"
+        android:fontFamily="@font/roboto"
+        android:text="@string/my_character"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtMonsName"
+        android:shadowColor="#000000"
+        android:shadowDx="1.5"
+        android:shadowDy="1.3"
+        android:shadowRadius="1.6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="56dp"
+        android:text="@string/monster_name"
+        android:fontFamily="@font/roboto"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/txtHeroName" />
+
+    <TextView
+        android:id="@+id/txtHeroMP"
+        android:shadowColor="#000000"
+        android:shadowDx="1.5"
+        android:shadowDy="1.3"
+        android:shadowRadius="1.6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/character_mp"
+        android:fontFamily="@font/roboto"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="@+id/txtHeroHP"
+        app:layout_constraintTop_toBottomOf="@+id/txtHeroHP" />
+
+    <TextView
+        android:id="@+id/txtMonsMP"
+        android:shadowColor="#000000"
+        android:shadowDx="1.5"
+        android:shadowDy="1.3"
+        android:shadowRadius="1.6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto"
+        android:textColor="@color/white"
+        android:text="@string/monster_mp"
+        app:layout_constraintEnd_toEndOf="@+id/txtMonsHP"
+        app:layout_constraintTop_toTopOf="@+id/txtHeroMP" />
+
+    <TextView
+        android:id="@+id/txtHeroHP"
+        android:shadowColor="#000000"
+        android:shadowDx="1.5"
+        android:shadowDy="1.3"
+        android:shadowRadius="1.6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/character_hp"
+        android:fontFamily="@font/roboto"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="@+id/txtHeroName"
+        app:layout_constraintTop_toBottomOf="@+id/txtHeroDPS" />
+
+    <TextView
+        android:id="@+id/txtMonsHP"
+        android:shadowColor="#000000"
+        android:shadowDx="1.5"
+        android:shadowDy="1.3"
+        android:shadowRadius="1.6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/monster_hp"
+        android:fontFamily="@font/roboto"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@+id/txtMonsName"
+        app:layout_constraintTop_toTopOf="@+id/txtHeroHP" />
+
+    <TextView
+        android:id="@+id/txtHeroDPS"
+        android:shadowColor="#000000"
+        android:shadowDx="1.5"
+        android:shadowDy="1.3"
+        android:shadowRadius="1.6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/hero_damage"
+        android:fontFamily="@font/roboto"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="@+id/txtHeroName"
+        app:layout_constraintTop_toBottomOf="@+id/txtHeroName" />
+
+    <TextView
+        android:id="@+id/txtMonsDPS"
+        android:shadowColor="#000000"
+        android:shadowDx="1.5"
+        android:shadowDy="1.3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/monster_damage"
+        android:fontFamily="@font/roboto"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@+id/txtMonsName"
+        app:layout_constraintTop_toTopOf="@+id/txtHeroDPS" />
+
+    <Button
+        android:id="@+id/btnNxtTurn"
+        android:layout_width="169dp"
+        android:layout_height="108dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/first_turn"
+        android:fontFamily="@font/roboto"
+        app:layout_constraintEnd_toStartOf="@+id/txtMonsName"
+        app:layout_constraintHorizontal_bias="0.536"
+        app:layout_constraintStart_toEndOf="@+id/txtHeroName"
+        app:layout_constraintTop_toTopOf="@+id/txtHeroName" />
+
+    <TextView
+        android:id="@+id/txtCombatLog"
+        android:shadowColor="#000000"
+        android:shadowDx="1.5"
+        android:shadowDy="1.3"
+        android:shadowRadius="1.6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:fontFamily="@font/roboto"
+        android:text="@string/combatlog"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.499"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SpeakableTextPresentCheck,TextContrastCheck" />
+
+    <ImageButton
+        android:id="@+id/btnSkill1"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="20dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:scaleType="fitXY"
+
+        android:text="@string/skill1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnSkill2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toEndOf="@+id/txtHeroMP"
+        app:layout_constraintTop_toBottomOf="@+id/btnNxtTurn"
+        app:srcCompat="@drawable/skillicon1"
+        tools:ignore="SpeakableTextPresentCheck"
+        android:focusable="true" />
+
+    <ImageButton
+        android:id="@+id/btnSkill2"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="false"
+        android:scaleType="fitXY"
+        android:text="@string/skill2"
+        app:layout_constraintEnd_toStartOf="@+id/btnSkill3"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btnSkill1"
+        app:layout_constraintTop_toTopOf="@+id/btnSkill1"
+        app:srcCompat="@drawable/skillicon2"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <ImageButton
+        android:id="@+id/btnSkill3"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="false"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="@+id/btnSkill2"
+        app:layout_constraintEnd_toStartOf="@+id/btnSkill4"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btnSkill2"
+        app:layout_constraintTop_toTopOf="@+id/btnSkill2"
+        app:srcCompat="@drawable/skillicon3"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <ImageButton
+        android:id="@+id/btnSkill4"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="false"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="@+id/btnSkill3"
+        app:layout_constraintEnd_toStartOf="@+id/txtMonsMP"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btnSkill3"
+        app:layout_constraintTop_toTopOf="@+id/btnSkill3"
+        app:srcCompat="@drawable/skillicon4"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <ImageView
+        android:id="@+id/heroHPbar"
+        android:layout_width="334dp"
+        android:layout_height="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/healthbar" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
