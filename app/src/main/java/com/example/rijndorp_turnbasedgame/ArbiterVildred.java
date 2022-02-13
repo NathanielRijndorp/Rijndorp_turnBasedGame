@@ -1,10 +1,14 @@
 package com.example.rijndorp_turnbasedgame;
 
+import static android.content.ContentValues.TAG;
+
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.res.ColorStateList;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -12,9 +16,11 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Random;
 
+@SuppressLint("SetTextI18n")
 public class ArbiterVildred extends AppCompatActivity implements View.OnClickListener {
 
     MediaPlayer sfxPlayer;
@@ -34,19 +40,22 @@ public class ArbiterVildred extends AppCompatActivity implements View.OnClickLis
     public ProgressBar hpBar;
     int monsCrit;
     int heroCrit;
-    int crit;
     //Monster Stats
     String monsName = "Enott the Red Nose Reindeer";
     int monsterHP = 3000;
     int monsterMP = 400;
     int monsterMinDamage = 40;
-    int monsterMaxDamage = 55;
+    int monsterMaxDamage = 222;
     //Game Turn
     int turnNumber = 1;
 
     boolean disabledstatus = false;
     int statuscounter = 0;
-    int buttoncounter = 0;
+    int buttoncounter1 = 0;
+    int buttoncounter2 = 0;
+    int buttoncounter3 = 0;
+    int buttoncounter4 = 0;
+    int burnCounter = 0;
 
 
     @Override
@@ -78,8 +87,8 @@ public class ArbiterVildred extends AppCompatActivity implements View.OnClickLis
         txtMonsHP.setText(String.valueOf(monsterHP));
         txtMonsMP.setText(String.valueOf(monsterMP));
         //DPS XML
-        txtHeroDPS.setText(String.valueOf(heroMinDamage) + " ~ " + String.valueOf(heroMaxDamage));
-        txtMonsDPS.setText(String.valueOf(monsterMinDamage) + " ~ " + String.valueOf(monsterMaxDamage));
+        txtHeroDPS.setText(heroMinDamage + " ~ " + heroMaxDamage);
+        txtMonsDPS.setText(monsterMinDamage + " ~ " + monsterMaxDamage);
         //Skill XML
         skill1 = findViewById(R.id.btnSkill1);
         skill2 = findViewById(R.id.btnSkill2);
@@ -90,22 +99,18 @@ public class ArbiterVildred extends AppCompatActivity implements View.OnClickLis
         hpBar.setMax(100);
 
 
-
-
         //button onClick Listener
         btnNextTurn.setOnClickListener(this);
         skill1.setOnClickListener(this);
+        skill2.setOnClickListener(this);
+        skill3.setOnClickListener(this);
+        skill4.setOnClickListener(this);
     }
     private void normalHit() {
         if (sfxPlayer == null) {
             sfxPlayer = new MediaPlayer();
             sfxPlayer = MediaPlayer.create(this, R.raw.normalhitsfx);
-            sfxPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                @Override
-                public void onCompletion(MediaPlayer mediaPlayer) {
-                    stopPlayer();
-                }
-            });
+            sfxPlayer.setOnCompletionListener(mediaPlayer -> stopPlayer());
             sfxPlayer.start();
         }
     }
@@ -113,12 +118,7 @@ public class ArbiterVildred extends AppCompatActivity implements View.OnClickLis
         if (sfxPlayer == null) {
             sfxPlayer = new MediaPlayer();
             sfxPlayer = MediaPlayer.create(this, R.raw.crithitsfx);
-            sfxPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                @Override
-                public void onCompletion(MediaPlayer mediaPlayer) {
-                    stopPlayer();
-                }
-            });
+            sfxPlayer.setOnCompletionListener(mediaPlayer -> stopPlayer());
             sfxPlayer.start();
         }
     }
@@ -128,16 +128,110 @@ public class ArbiterVildred extends AppCompatActivity implements View.OnClickLis
             sfxPlayer = null;
         }
     }
+    private void resetStats() {
+        heroHP = 1500;
+        heroMP = 1000;
+        monsterHP = 3000;
+        turnNumber= 1;
+        burnCounter = 0;
+        buttoncounter1 = 0;
+        buttoncounter2 = 0;
+        buttoncounter3 = 0;
+        buttoncounter4 = 0;
+        btnNextTurn.setText("Reset Game");
+    }
+    private void setSkill4() {
+        if (heroMP > 0) {
+            txtLog.setText("Arbiter Vildred "  + " has released all his mana! It dealt " + ((heroMP * 2)-666) + " damage to the enemy. Mana Void!");
+            buttoncounter4 = 999;
+            monsterHP -= ((heroMP*2)-666);
+            //this is the code to set the value of the hp bar
+            hpBar.setProgress((int) heroHpPercent);
+            turnNumber++;
+            txtMonsHP.setText(String.valueOf(monsterHP));
+            btnNextTurn.setText("Next Turn (" + turnNumber + ")");
+            heroMP = 0;
+        }
+        else {
+            txtLog.setText("Mana insufficient");
+        }
+        if(monsterHP < 0){ //even
+            txtLog.setText("Arbiter Vildred " +" dealt "+ heroMP * 2 + " damage to the enemy. The player is victorious!");
+            resetStats();
+        }
+    }
+    private void setSkill3(int herodps) {
+        if (heroMP > 200) {
+            buttoncounter3 = 10;
+            heroMP -= 200;
+            burnCounter = 3;
+            //this is the code to set the value of the hp bar
+            hpBar.setProgress((int) heroHpPercent);
+            turnNumber++;
+            txtMonsHP.setText(String.valueOf(monsterHP));
+            btnNextTurn.setText("Next Turn (" + turnNumber + ")");
+            txtLog.setText("Arbiter Vildred " + " burned the enemy! You will be dealing a continous damage of 150 every turn for 3 turns!");
+        }
+        else {
+            txtLog.setText("Mana insufficient");
+        }
+        if(monsterHP < 0){ //even
+            txtLog.setText("Arbiter Vildred " +" dealt "+ herodps + " damage to the enemy. The player is victorious!");
+            resetStats();
+        }
+    }
+    private void setSkill2(int herodps) {
+        if (heroMP > 0) {
+            buttoncounter2 = 5;
+            Random randomizer = new Random();
+            heroHP += randomizer.nextInt(666) + 666;
+            heroMP = heroMP/2;
+            //this is the code to set the value of the hp bar
+            hpBar.setProgress((int) heroHpPercent);
+            turnNumber++;
+            txtMonsHP.setText(String.valueOf(monsterHP));
+            btnNextTurn.setText("Next Turn (" + turnNumber + ")");
+            txtLog.setText("Arbiter Vildred has used forbidden magic to heal himself!");
+        }
+        else {
+            txtLog.setText("Mana insufficient");
+        }
+        if(monsterHP < 0){ //even
+            txtLog.setText("Arbiter Vildred " +" dealt "+ herodps + " damage to the enemy. The player is victorious!");
+            resetStats();
+        }
+    }
+    private void setSkill1(int herodps) {
+        if (heroMP > 100) {
+            buttoncounter1 = 8;
+            heroMP -= 100;
+            monsterHP -= 250;
+            //this is the code to set the value of the hp bar
+            hpBar.setProgress((int) heroHpPercent);
+            turnNumber++;
+            txtMonsHP.setText(String.valueOf(monsterHP));
+            btnNextTurn.setText("Next Turn (" + turnNumber + ")");
+
+            txtLog.setText("Arbiter Vildred " + " used stun!. It dealt " + 250 + " damage to the enemy. The enemy is stunned for 4 turns");
+        }
+        else {
+            txtLog.setText("Mana insufficient");
+        }
+        if(monsterHP < 0){ //even
+            txtLog.setText("Arbiter Vildred " +" dealt "+ (herodps) + " damage to the enemy. The player is victorious!");
+            resetStats();
+        }
+    }
     @Override
     public void onClick(View v) {
-
         Random randomizer = new Random();
         Random critRandomizer = new Random();
         int herodps = randomizer.nextInt(heroMaxDamage - heroMinDamage) + heroMinDamage;
         int monsdps = randomizer.nextInt(monsterMaxDamage - monsterMinDamage) + monsterMinDamage;
+        //crit checkers, two were placed to differenciate odds
         int crit = critRandomizer.nextInt(100);
         int crit2 = critRandomizer.nextInt(100);
-
+        //crit condition
         if (crit <=10) {
             heroCrit++;
         }
@@ -150,20 +244,55 @@ public class ArbiterVildred extends AppCompatActivity implements View.OnClickLis
         else {
             monsCrit = 0;
         }
-        if(turnNumber % 2 != 1){//if it is enemy's turn, disable button
+        if(turnNumber % 2 == 1){//if it is enemy's turn, disable button
             skill1.setEnabled(false);
+            skill2.setEnabled(false);
+            skill3.setEnabled(false);
+            skill4.setEnabled(false);
         }
-        else if(turnNumber%2 == 1){
-            skill1.setEnabled(true);
+        else if (turnNumber %2 == 0) {//if it is your turn, enable button
+            if(buttoncounter1 >0){
+                skill1.setEnabled(false);
+                // buttoncounter1--;
+            }
+            else if(buttoncounter1 ==0 ){
+                skill1.setEnabled(true);
+            }
+            else {
+                txtLog.setText("Not your turn");
+            }
+            if(buttoncounter2 >0){
+                skill2.setEnabled(false);
+                // buttoncounter2--;
+            }
+            else if(buttoncounter2 ==0 ){
+                skill2.setEnabled(true);
+            }
+            else {
+                txtLog.setText("Not your turn");
+            }
+            if(buttoncounter3 >0){
+                skill3.setEnabled(false);
+                // buttoncounter--;
+            }
+            else if(buttoncounter3 ==0 ){
+                skill3.setEnabled(true);
+            }
+            else {
+                txtLog.setText("Not your turn");
+            }
+            if(buttoncounter4 >0 ){
+                skill4.setEnabled(false);
+                // buttoncounter--;
+            }
+            else if(buttoncounter4 ==0 ){
+                skill4.setEnabled(true);
+            }
+        }
+        if (heroHP > 1501) {
+            heroHP = 1500;
         }
 
-        if(buttoncounter>0){
-            skill1.setEnabled(false);
-            // buttoncounter--;
-        }
-        else if(buttoncounter==0){
-            skill1.setEnabled(true);
-        }
         // this is the formula to get the health percentage
         // you can change 1500 to a variable for the max health
         heroHpPercent = heroHP * 100 / 1500;
@@ -182,57 +311,47 @@ public class ArbiterVildred extends AppCompatActivity implements View.OnClickLis
         else {
             hpBar.setProgressTintList(ColorStateList.valueOf((getResources().getColor(R.color.lowhp))));
         }
+        if (turnNumber %2 != 1 && burnCounter > 0) {
+                Log.d(TAG, "beforeBurn: " + monsterHP);
+                monsterHP -= 150;
+                Log.d(TAG, "afterBurn: " + monsterHP);
+                burnCounter -= 1;
+        }
         switch(v.getId()) {
+            case R.id.btnSkill4:
+                setSkill4();
+                break;
+            case R.id.btnSkill3:
+                setSkill3(herodps);
+                break;
+            case R.id.btnSkill2:
+                setSkill2(herodps);
+                break;
             case R.id.btnSkill1:
-                monsterHP = monsterHP - 250;
-                //this is the code to set the value of the hp bar
-                hpBar.setProgress((int) heroHpPercent);
-                turnNumber++;
-                txtMonsHP.setText(String.valueOf(monsterHP));
-                btnNextTurn.setText("Next Turn ("+ String.valueOf(turnNumber)+")");
-
-                txtLog.setText("Our Hero "+String.valueOf(heroName) +" used stun!. It dealt "+String.valueOf(250) + " damage to the enemy. The enemy is stunned for 4 turns");
-
-                disabledstatus = true;
-                statuscounter = 4;
-
-                if(monsterHP < 0){ //even
-                    txtLog.setText("Our Hero "+String.valueOf(heroName) +" dealt "+String.valueOf(herodps) + " damage to the enemy. The player is victorious!");
-                    heroHP = 1500;
-                    monsterHP = 3000;
-                    turnNumber= 1;
-                    btnNextTurn.setText("Reset Game");
-                }
-                buttoncounter=12;
-
-
+                setSkill1(herodps);
                 break;
             case R.id.btnNxtTurn:
                 //
-                if(turnNumber % 2 == 1){ //odd
+                if(turnNumber % 2 == 1){ //oddturnNumber % 2 == 1
                     if (heroCrit == 1) {
-                        monsterHP = monsterHP - herodps*2;
-                        txtLog.setText("Our Hero "+String.valueOf(heroName) +" dealt  "+String.valueOf(herodps*2) + " critical damage to the enemy.");
+                        monsterHP -= (herodps*2);
+                        txtLog.setText("Arbiter Vildred " +" dealt  "+ (herodps*2) + " critical damage to the enemy.");
                         criticalHit();
                     }
                     else {
-                        monsterHP = monsterHP - herodps;
-                        txtLog.setText("Our Hero " + String.valueOf(heroName) + " dealt " + String.valueOf(herodps) + " damage to the enemy.");
+                        monsterHP -= herodps;
+                        txtLog.setText("Arbiter Vildred " + " dealt " + (herodps) + " damage to the enemy.");
                         normalHit();
                     }
                     //this is the code to set the value of the hp bar
                     hpBar.setProgress((int) heroHpPercent);
                     turnNumber++;
                     txtMonsHP.setText(String.valueOf(monsterHP));
-                    btnNextTurn.setText("Next Turn ("+ String.valueOf(turnNumber)+")");
+                    btnNextTurn.setText("Next Turn ("+ turnNumber +")");
 
                     if(monsterHP < 0){ //even
-                        txtLog.setText("Our Hero "+String.valueOf(heroName) +" dealt "+String.valueOf(herodps) + " damage to the enemy. The player is victorious!");
-                        heroHP = 1500;
-                        monsterHP = 3000;
-                        turnNumber= 1;
-                        buttoncounter=0;
-                        btnNextTurn.setText("Reset Game");
+                        txtLog.setText("Arbiter Vildred " +" dealt "+ (herodps) + " damage to the enemy. The player is victorious!");
+                        resetStats();
                     }
 
                     // if(statuscounter>0){ //if the enemy is still stunned, reduce the stun for 1 turn
@@ -241,15 +360,19 @@ public class ArbiterVildred extends AppCompatActivity implements View.OnClickLis
                     //   disabledstatus=false;
                     // }
                     //  }
-                    buttoncounter--;
-                }
-                else if(turnNumber%2 != 1){ //even
+                    buttoncounter1--;
 
+                    break;
+                }
+                else if(turnNumber %2 != 1){ //even
+                    if (burnCounter > 0) {
+                        Toast.makeText(this, "Enemy is still burning!", Toast.LENGTH_SHORT).show();
+                    }
                     if(disabledstatus==true){
-                        txtLog.setText("The enemy is still stunned for "+String.valueOf(statuscounter)+ "turns");
+                        txtLog.setText("The enemy is still stunned for "+ statuscounter + "turns");
                         statuscounter--;
                         turnNumber++;
-                        btnNextTurn.setText("Next Turn ("+ String.valueOf(turnNumber)+")");
+                        btnNextTurn.setText("Next Turn ("+ turnNumber +")");
                         if(statuscounter==0){
                             disabledstatus=false;
                         }
@@ -257,33 +380,31 @@ public class ArbiterVildred extends AppCompatActivity implements View.OnClickLis
                     else{
                         if (monsCrit == 1) {
                             heroHP = heroHP - monsdps*10;
-                            txtLog.setText("The monster "+String.valueOf(monsName)+" dealt "+String.valueOf(monsdps*10)+ " critical damage to the enemy.");
+                            txtLog.setText("The monster "+ monsName +" dealt "+ monsdps * 10 + " critical damage to the enemy.");
                             criticalHit();
+                            hpBar.setProgress((int) heroHpPercent);
                         }
                         else {
-                            monsterHP = monsterHP - herodps;
-                            txtLog.setText("The monster "+String.valueOf(monsName)+" dealt "+String.valueOf(monsdps)+ " damage to the enemy.");
+                            heroHP -= monsdps;
+                            txtLog.setText("The monster "+ monsName +" dealt "+ monsdps + " damage to the enemy.");
                             normalHit();
+                            hpBar.setProgress((int) heroHpPercent);
                         }
-                        heroHP = heroHP - monsdps;
                         //this is the code to set the value of the hp bar
                         hpBar.setProgress((int) heroHpPercent);
                         turnNumber++;
                         txtHeroHP.setText(String.valueOf(heroHP));
-                        btnNextTurn.setText("Next Turn ("+ String.valueOf(turnNumber)+")");
+                        btnNextTurn.setText("Next Turn ("+ turnNumber +")");
 
                         if(heroHP < 0){
-                            txtLog.setText("The monster "+String.valueOf(monsName)+" dealt "+String.valueOf(monsdps)+ " damage to the enemy. Game Over");
-                            heroHP = 1500;
-                            monsterHP = 3000;
-                            turnNumber= 1;
-                            buttoncounter=0;
-                            btnNextTurn.setText("Reset Game");
+                            txtLog.setText("The monster "+ monsName +" dealt "+ monsdps + " damage to the enemy. Game Over");
+                            resetStats();
                         }
                     }
                     // buttoncounter--;
                 }
                 break;
+
         }
     }
 }

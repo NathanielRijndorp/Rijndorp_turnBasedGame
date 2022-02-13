@@ -57,7 +57,7 @@ public class ObtainCharacter extends AppCompatActivity {
 
     public void randomCharacter(){
         Intent intentArray[] = {new Intent(this, ArbiterVildred.class), new Intent(this, ArbiterVildred.class),
-                new Intent(this, MainActivity.class), new Intent(this, MainActivity.class)};
+                new Intent(this, ArbiterVildred.class), new Intent(this, ArbiterVildred.class)};
 
         int random = (int) (Math.random()*4);
         Intent intent2 = intentArray[random];
