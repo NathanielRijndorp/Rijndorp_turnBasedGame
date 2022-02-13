@@ -9,15 +9,15 @@
 
     <TextView
         android:id="@+id/txtHeroName"
-        android:shadowColor="#000000"
-        android:shadowDx="1.5"
-        android:shadowDy="1.3"
-        android:shadowRadius="1.6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
         android:layout_marginTop="148dp"
         android:fontFamily="@font/roboto"
+        android:shadowColor="#000000"
+        android:shadowDx="1.5"
+        android:shadowDy="1.3"
+        android:shadowRadius="1.6"
         android:text="@string/my_character"
         android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,101 +25,101 @@
 
     <TextView
         android:id="@+id/txtMonsName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="56dp"
+        android:fontFamily="@font/roboto"
         android:shadowColor="#000000"
         android:shadowDx="1.5"
         android:shadowDy="1.3"
         android:shadowRadius="1.6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="56dp"
         android:text="@string/monster_name"
-        android:fontFamily="@font/roboto"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/txtHeroName" />
 
     <TextView
         android:id="@+id/txtHeroMP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/roboto"
         android:shadowColor="#000000"
         android:shadowDx="1.5"
         android:shadowDy="1.3"
         android:shadowRadius="1.6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:text="@string/character_mp"
-        android:fontFamily="@font/roboto"
         android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="@+id/txtHeroHP"
         app:layout_constraintTop_toBottomOf="@+id/txtHeroHP" />
 
     <TextView
         android:id="@+id/txtMonsMP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto"
         android:shadowColor="#000000"
         android:shadowDx="1.5"
         android:shadowDy="1.3"
         android:shadowRadius="1.6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/roboto"
-        android:textColor="@color/white"
         android:text="@string/monster_mp"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="@+id/txtMonsHP"
         app:layout_constraintTop_toTopOf="@+id/txtHeroMP" />
 
     <TextView
         android:id="@+id/txtHeroHP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/roboto"
         android:shadowColor="#000000"
         android:shadowDx="1.5"
         android:shadowDy="1.3"
         android:shadowRadius="1.6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:text="@string/character_hp"
-        android:fontFamily="@font/roboto"
         android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="@+id/txtHeroName"
         app:layout_constraintTop_toBottomOf="@+id/txtHeroDPS" />
 
     <TextView
         android:id="@+id/txtMonsHP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto"
         android:shadowColor="#000000"
         android:shadowDx="1.5"
         android:shadowDy="1.3"
         android:shadowRadius="1.6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:text="@string/monster_hp"
-        android:fontFamily="@font/roboto"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="@+id/txtMonsName"
         app:layout_constraintTop_toTopOf="@+id/txtHeroHP" />
 
     <TextView
         android:id="@+id/txtHeroDPS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/roboto"
         android:shadowColor="#000000"
         android:shadowDx="1.5"
         android:shadowDy="1.3"
         android:shadowRadius="1.6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:text="@string/hero_damage"
-        android:fontFamily="@font/roboto"
         android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="@+id/txtHeroName"
         app:layout_constraintTop_toBottomOf="@+id/txtHeroName" />
 
     <TextView
         android:id="@+id/txtMonsDPS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto"
         android:shadowColor="#000000"
         android:shadowDx="1.5"
         android:shadowDy="1.3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:text="@string/monster_damage"
-        android:fontFamily="@font/roboto"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="@+id/txtMonsName"
         app:layout_constraintTop_toTopOf="@+id/txtHeroDPS" />
@@ -129,8 +129,8 @@
         android:layout_width="169dp"
         android:layout_height="108dp"
         android:layout_marginTop="16dp"
-        android:text="@string/first_turn"
         android:fontFamily="@font/roboto"
+        android:text="@string/first_turn"
         app:layout_constraintEnd_toStartOf="@+id/txtMonsName"
         app:layout_constraintHorizontal_bias="0.536"
         app:layout_constraintStart_toEndOf="@+id/txtHeroName"
@@ -138,14 +138,14 @@
 
     <TextView
         android:id="@+id/txtCombatLog"
-        android:shadowColor="#000000"
-        android:shadowDx="1.5"
-        android:shadowDy="1.3"
-        android:shadowRadius="1.6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="52dp"
         android:fontFamily="@font/roboto"
+        android:shadowColor="#000000"
+        android:shadowDx="1.5"
+        android:shadowDy="1.3"
+        android:shadowRadius="1.6"
         android:text="@string/combatlog"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
@@ -161,8 +161,9 @@
         android:layout_marginTop="20dp"
         android:background="?android:attr/selectableItemBackground"
         android:clickable="true"
-        android:scaleType="fitXY"
+        android:focusable="true"
 
+        android:scaleType="fitXY"
         android:text="@string/skill1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnSkill2"
@@ -171,8 +172,7 @@
         app:layout_constraintStart_toEndOf="@+id/txtHeroMP"
         app:layout_constraintTop_toBottomOf="@+id/btnNxtTurn"
         app:srcCompat="@drawable/skillicon1"
-        tools:ignore="SpeakableTextPresentCheck"
-        android:focusable="true" />
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <ImageButton
         android:id="@+id/btnSkill2"
@@ -219,16 +219,29 @@
         app:srcCompat="@drawable/skillicon4"
         tools:ignore="SpeakableTextPresentCheck" />
 
-    <ImageView
-        android:id="@+id/heroHPbar"
-        android:layout_width="334dp"
-        android:layout_height="40dp"
+    <ProgressBar
+        android:id="@+id/hpBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="184dp"
+        android:layout_height="24dp"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/healthbaroverlay"
+        android:progress="100"
+        android:progressDrawable="@drawable/hp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.029"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="207dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/healthbar" />
+        app:srcCompat="@drawable/healthbaroverlay" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

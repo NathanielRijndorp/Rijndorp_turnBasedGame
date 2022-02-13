@@ -7,10 +7,18 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
     <color name="rainbow1">#FF9AA2</color>
     <color name="rainbow2">#FFB7B2</color>
     <color name="rainbow3">#FFDAC1</color>
     <color name="rainbow4">#E2F0CB</color>
     <color name="rainbow5">#B5EAD7</color>
     <color name="rainbow6">#C7CEEA</color>
+
+    <color name="fullhp">#b5ead7</color>
+    <color name="seventyhp">#cbf0d1</color>
+    <color name="fiftyhp">#ffdac1</color>
+    <color name="twentyfivehp">#ffb7b2</color>
+    <color name="lowhp">#ff9aa2</color>
+
 </resources>

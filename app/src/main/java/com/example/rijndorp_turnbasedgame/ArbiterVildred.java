@@ -2,6 +2,7 @@ package com.example.rijndorp_turnbasedgame;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -9,19 +10,19 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.Random;
 
-public class ArbiterVildred extends AppCompatActivity implements View.OnClickListener{
+public class ArbiterVildred extends AppCompatActivity implements View.OnClickListener {
 
 
-
-
-
-    TextView txtHeroName,txtMonsName,txtHeroHP,txtMonsHP,txtHeroMP,txtMonsMP,txtHeroDPS,txtMonsDPS,txtLog;
+    TextView txtHeroName, txtMonsName, txtHeroHP, txtMonsHP, txtHeroMP, txtMonsMP, txtHeroDPS, txtMonsDPS, txtLog;
     Button btnNextTurn;
-    ImageButton skill1,skill2,skill3,skill4;
+    ImageButton skill1, skill2, skill3, skill4;
 
     //Hero Stats
     String heroName = "Hosea Zacharias";
@@ -29,6 +30,9 @@ public class ArbiterVildred extends AppCompatActivity implements View.OnClickLis
     int heroMP = 1000;
     int heroMinDamage = 100;
     int heroMaxDamage = 150;
+    //HP Bar
+    double heroHpPercent;
+    public ProgressBar hpBar;
 
     //Monster Stats
     String monsName = "Hosea Zacharias Hater";
@@ -37,20 +41,18 @@ public class ArbiterVildred extends AppCompatActivity implements View.OnClickLis
     int monsterMinDamage = 40;
     int monsterMaxDamage = 55;
     //Game Turn
-    int turnNumber= 1;
+    int turnNumber = 1;
 
     boolean disabledstatus = false;
     int statuscounter = 0;
     int buttoncounter = 0;
 
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.arbiter_pvp);
         getSupportActionBar().hide();
         //XML ids for text and button
@@ -75,16 +77,17 @@ public class ArbiterVildred extends AppCompatActivity implements View.OnClickLis
         txtMonsHP.setText(String.valueOf(monsterHP));
         txtMonsMP.setText(String.valueOf(monsterMP));
 
-        txtHeroDPS.setText(String.valueOf(heroMinDamage)+ " ~ "+ String.valueOf(heroMaxDamage));
-        txtMonsDPS.setText(String.valueOf(monsterMinDamage)+ " ~ "+ String.valueOf(monsterMaxDamage));
+        txtHeroDPS.setText(String.valueOf(heroMinDamage) + " ~ " + String.valueOf(heroMaxDamage));
+        txtMonsDPS.setText(String.valueOf(monsterMinDamage) + " ~ " + String.valueOf(monsterMaxDamage));
 
         skill1 = findViewById(R.id.btnSkill1);
         skill2 = findViewById(R.id.btnSkill2);
         skill3 = findViewById(R.id.btnSkill3);
         skill4 = findViewById(R.id.btnSkill4);
+        //these two codes are new
+        hpBar = findViewById(R.id.hpBar);
+        hpBar.setMax(100);
 
-        ImageView heroHPbar, monsHPbar;
-        heroHPbar = findViewById(R.id.heroHPbar);
 
 
 
@@ -92,17 +95,8 @@ public class ArbiterVildred extends AppCompatActivity implements View.OnClickLis
         btnNextTurn.setOnClickListener(this);
         skill1.setOnClickListener(this);
     }
-
     @Override
     public void onClick(View v) {
-
-        ImageView heroHPbar, monsHPbar;
-        heroHPbar = findViewById(R.id.heroHPbar);
-        CharSequence v1=txtHeroHP.getText();
-        int currentHealth =Integer.parseInt(v1.toString());
-        int maxHealth = heroHP;
-        int heroHPPercent = currentHealth/maxHealth;
-        heroHPbar.setMaxWidth(heroHPPercent);
 
 
 
@@ -127,11 +121,29 @@ public class ArbiterVildred extends AppCompatActivity implements View.OnClickLis
         else if(buttoncounter==0){
             skill1.setEnabled(true);
         }
-
+        // this is the formula to get the health percentage
+        // you can change 1500 to a variable for the max health
+        heroHpPercent = heroHP * 100 / 1500;
+        // ito yung para mag change ang color ng health bar
+        if ((int) heroHpPercent > 75 && (int) heroHpPercent <= 100 ) {
+            hpBar.setProgressTintList(ColorStateList.valueOf(getResources().getColor(R.color.fullhp)));// for the r.color thingy kay go to colors and make some color
+        } else if ((int) heroHpPercent >= 50 && (int) heroHpPercent <= 75 ) {
+            hpBar.setProgressTintList(ColorStateList.valueOf(getResources().getColor(R.color.seventyhp)));
+        }
+        else if ((int) heroHpPercent >= 25 && (int) heroHpPercent <= 50 ) {
+            hpBar.setProgressTintList(ColorStateList.valueOf(getResources().getColor(R.color.fiftyhp)));
+        }
+        else if ((int) heroHpPercent >= 10 && (int) heroHpPercent <= 25 ) {
+            hpBar.setProgressTintList(ColorStateList.valueOf(getResources().getColor(R.color.twentyfivehp)));
+        }
+        else {
+            hpBar.setProgressTintList(ColorStateList.valueOf((getResources().getColor(R.color.lowhp))));
+        }
         switch(v.getId()) {
             case R.id.btnSkill1:
-
                 monsterHP = monsterHP - 250;
+                //this is the code to set the value of the hp bar
+                hpBar.setProgress((int) heroHpPercent);
                 turnNumber++;
                 txtMonsHP.setText(String.valueOf(monsterHP));
                 btnNextTurn.setText("Next Turn ("+ String.valueOf(turnNumber)+")");
@@ -154,9 +166,10 @@ public class ArbiterVildred extends AppCompatActivity implements View.OnClickLis
                 break;
             case R.id.btnNxtTurn:
                 //
-
                 if(turnNumber % 2 == 1){ //odd
                     monsterHP = monsterHP - herodps;
+                    //this is the code to set the value of the hp bar
+                    hpBar.setProgress((int) heroHpPercent);
                     turnNumber++;
                     txtMonsHP.setText(String.valueOf(monsterHP));
                     btnNextTurn.setText("Next Turn ("+ String.valueOf(turnNumber)+")");
@@ -193,6 +206,8 @@ public class ArbiterVildred extends AppCompatActivity implements View.OnClickLis
                     }
                     else{
                         heroHP = heroHP - monsdps;
+                        //this is the code to set the value of the hp bar
+                        hpBar.setProgress((int) heroHpPercent);
                         turnNumber++;
                         txtHeroHP.setText(String.valueOf(heroHP));
                         btnNextTurn.setText("Next Turn ("+ String.valueOf(turnNumber)+")");
