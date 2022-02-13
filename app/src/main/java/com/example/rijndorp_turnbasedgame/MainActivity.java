@@ -15,7 +15,7 @@ import android.widget.Toast;
 
 import java.util.Random;
 
-public class MainActivity extends AppCompatActivity implements  View.OnClickListener{
+public class MainActivity extends AppCompatActivity {
     MediaPlayer mediaPlayer;
     Button button;
 
@@ -47,8 +47,8 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
                     stopPlayer();
                 }
             });
+            mediaPlayer.start();
         }
-        mediaPlayer.start();
     }
     private void stopPlayer() {
         if (mediaPlayer != null) {
@@ -61,10 +61,6 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
     private void closeMedia() {
         stopPlayer();
     }
-    public void onClick(View v) {
 
-
-
-    }
 
 }
