@@ -24,7 +24,6 @@ import java.util.Random;
 public class ArbiterVildred extends AppCompatActivity implements View.OnClickListener {
 
     MediaPlayer sfxPlayer;
-    Button button;
     TextView txtHeroName, txtMonsName, txtHeroHP, txtMonsHP, txtHeroMP, txtMonsMP, txtHeroDPS, txtMonsDPS, txtLog;
     Button btnNextTurn;
     ImageButton skill1, skill2, skill3, skill4;
@@ -63,7 +62,7 @@ public class ArbiterVildred extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.arbiter_pvp);
+        setContentView(R.layout.vildred_scene);
         getSupportActionBar().hide();
 
         //XML ids for text and button
@@ -145,8 +144,6 @@ public class ArbiterVildred extends AppCompatActivity implements View.OnClickLis
             txtLog.setText("Arbiter Vildred "  + " has released all his mana! It dealt " + ((heroMP * 2)-666) + " damage to the enemy. Mana Void!");
             buttoncounter4 = 999;
             monsterHP -= ((heroMP*2)-666);
-            //this is the code to set the value of the hp bar
-            hpBar.setProgress((int) heroHpPercent);
             turnNumber++;
             txtMonsHP.setText(String.valueOf(monsterHP));
             btnNextTurn.setText("Next Turn (" + turnNumber + ")");
@@ -165,8 +162,6 @@ public class ArbiterVildred extends AppCompatActivity implements View.OnClickLis
             buttoncounter3 = 10;
             heroMP -= 200;
             burnCounter = 3;
-            //this is the code to set the value of the hp bar
-            hpBar.setProgress((int) heroHpPercent);
             turnNumber++;
             txtMonsHP.setText(String.valueOf(monsterHP));
             btnNextTurn.setText("Next Turn (" + turnNumber + ")");
@@ -186,8 +181,6 @@ public class ArbiterVildred extends AppCompatActivity implements View.OnClickLis
             Random randomizer = new Random();
             heroHP += randomizer.nextInt(666) + 666;
             heroMP = heroMP/2;
-            //this is the code to set the value of the hp bar
-            hpBar.setProgress((int) heroHpPercent);
             turnNumber++;
             txtMonsHP.setText(String.valueOf(monsterHP));
             btnNextTurn.setText("Next Turn (" + turnNumber + ")");
@@ -203,16 +196,14 @@ public class ArbiterVildred extends AppCompatActivity implements View.OnClickLis
     }
     private void setSkill1(int herodps) {
         if (heroMP > 100) {
-            buttoncounter1 = 8;
+            buttoncounter1 = 5;
             heroMP -= 100;
             monsterHP -= 250;
-            //this is the code to set the value of the hp bar
-            hpBar.setProgress((int) heroHpPercent);
             turnNumber++;
             txtMonsHP.setText(String.valueOf(monsterHP));
             btnNextTurn.setText("Next Turn (" + turnNumber + ")");
 
-            txtLog.setText("Arbiter Vildred " + " used stun!. It dealt " + 250 + " damage to the enemy. The enemy is stunned for 4 turns");
+            txtLog.setText("Arbiter Vildred " + " used stun! It dealt " + 250 + " damage to the enemy. The enemy is stunned for 4 turns");
         }
         else {
             txtLog.setText("Mana insufficient");
@@ -221,6 +212,24 @@ public class ArbiterVildred extends AppCompatActivity implements View.OnClickLis
             txtLog.setText("Arbiter Vildred " +" dealt "+ (herodps) + " damage to the enemy. The player is victorious!");
             resetStats();
         }
+    }
+    private void reduceCoolDown() {
+        if (buttoncounter1 > 0) {
+            buttoncounter1 -= 1;
+        }
+        if (buttoncounter2 > 0) {
+            buttoncounter2 -= 1;
+        }
+        if (buttoncounter3 > 0) {
+            buttoncounter3 -= 1;
+        }
+        if (buttoncounter4 > 0) {
+            buttoncounter4 -= 1;
+        }
+    }
+    private void updateHpBar() {
+        //this is the code to set the value of the hp bar
+        hpBar.setProgress((int) heroHpPercent);
     }
     @Override
     public void onClick(View v) {
@@ -251,19 +260,17 @@ public class ArbiterVildred extends AppCompatActivity implements View.OnClickLis
             skill4.setEnabled(false);
         }
         else if (turnNumber %2 == 0) {//if it is your turn, enable button
-            if(buttoncounter1 >0){
+            if(buttoncounter1 > 0){
                 skill1.setEnabled(false);
-                // buttoncounter1--;
             }
-            else if(buttoncounter1 ==0 ){
+            else if(buttoncounter1 == 0 ){
                 skill1.setEnabled(true);
             }
             else {
                 txtLog.setText("Not your turn");
             }
-            if(buttoncounter2 >0){
+            if(buttoncounter2 > 0){
                 skill2.setEnabled(false);
-                // buttoncounter2--;
             }
             else if(buttoncounter2 ==0 ){
                 skill2.setEnabled(true);
@@ -271,9 +278,8 @@ public class ArbiterVildred extends AppCompatActivity implements View.OnClickLis
             else {
                 txtLog.setText("Not your turn");
             }
-            if(buttoncounter3 >0){
+            if(buttoncounter3 > 0){
                 skill3.setEnabled(false);
-                // buttoncounter--;
             }
             else if(buttoncounter3 ==0 ){
                 skill3.setEnabled(true);
@@ -281,9 +287,8 @@ public class ArbiterVildred extends AppCompatActivity implements View.OnClickLis
             else {
                 txtLog.setText("Not your turn");
             }
-            if(buttoncounter4 >0 ){
+            if(buttoncounter4 > 0 ){
                 skill4.setEnabled(false);
-                // buttoncounter--;
             }
             else if(buttoncounter4 ==0 ){
                 skill4.setEnabled(true);
@@ -292,7 +297,9 @@ public class ArbiterVildred extends AppCompatActivity implements View.OnClickLis
         if (heroHP > 1501) {
             heroHP = 1500;
         }
-
+        if (buttoncounter1 < -1) {
+            buttoncounter1 = 1;
+        }
         // this is the formula to get the health percentage
         // you can change 1500 to a variable for the max health
         heroHpPercent = heroHP * 100 / 1500;
@@ -343,8 +350,6 @@ public class ArbiterVildred extends AppCompatActivity implements View.OnClickLis
                         txtLog.setText("Arbiter Vildred " + " dealt " + (herodps) + " damage to the enemy.");
                         normalHit();
                     }
-                    //this is the code to set the value of the hp bar
-                    hpBar.setProgress((int) heroHpPercent);
                     turnNumber++;
                     txtMonsHP.setText(String.valueOf(monsterHP));
                     btnNextTurn.setText("Next Turn ("+ turnNumber +")");
@@ -353,15 +358,6 @@ public class ArbiterVildred extends AppCompatActivity implements View.OnClickLis
                         txtLog.setText("Arbiter Vildred " +" dealt "+ (herodps) + " damage to the enemy. The player is victorious!");
                         resetStats();
                     }
-
-                    // if(statuscounter>0){ //if the enemy is still stunned, reduce the stun for 1 turn
-                    // statuscounter--;
-                    // if(statuscounter==0){
-                    //   disabledstatus=false;
-                    // }
-                    //  }
-                    buttoncounter1--;
-
                     break;
                 }
                 else if(turnNumber %2 != 1){ //even
@@ -390,8 +386,6 @@ public class ArbiterVildred extends AppCompatActivity implements View.OnClickLis
                             normalHit();
                             hpBar.setProgress((int) heroHpPercent);
                         }
-                        //this is the code to set the value of the hp bar
-                        hpBar.setProgress((int) heroHpPercent);
                         turnNumber++;
                         txtHeroHP.setText(String.valueOf(heroHP));
                         btnNextTurn.setText("Next Turn ("+ turnNumber +")");
@@ -401,10 +395,14 @@ public class ArbiterVildred extends AppCompatActivity implements View.OnClickLis
                             resetStats();
                         }
                     }
-                    // buttoncounter--;
                 }
+                Log.d(TAG, "buttonCounter1: " + buttoncounter1);
+                Log.d(TAG, "buttonCounter2: " + buttoncounter2);
+                Log.d(TAG, "buttonCounter3: " + buttoncounter3);
+                Log.d(TAG, "buttonCounter4: " + buttoncounter4);
+                updateHpBar();
+                reduceCoolDown();
                 break;
-
         }
     }
 }
