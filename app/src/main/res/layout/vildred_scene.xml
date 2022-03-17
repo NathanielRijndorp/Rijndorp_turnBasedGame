@@ -8,139 +8,9 @@
     tools:context=".ArbiterVildred">
 
     <TextView
-        android:id="@+id/txtHeroName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="148dp"
-        android:fontFamily="@font/roboto"
-        android:shadowColor="#000000"
-        android:shadowDx="1.5"
-        android:shadowDy="1.3"
-        android:shadowRadius="1.6"
-        android:text="@string/my_character"
-        android:textColor="@color/white"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/txtMonsName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="56dp"
-        android:fontFamily="@font/roboto"
-        android:shadowColor="#000000"
-        android:shadowDx="1.5"
-        android:shadowDy="1.3"
-        android:shadowRadius="1.6"
-        android:text="@string/monster_name"
-        android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/txtHeroName" />
-
-    <TextView
-        android:id="@+id/txtHeroMP"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/roboto"
-        android:shadowColor="#000000"
-        android:shadowDx="1.5"
-        android:shadowDy="1.3"
-        android:shadowRadius="1.6"
-        android:text="@string/character_mp"
-        android:textColor="@color/white"
-        app:layout_constraintStart_toStartOf="@+id/txtHeroHP"
-        app:layout_constraintTop_toBottomOf="@+id/txtHeroHP" />
-
-    <TextView
-        android:id="@+id/txtMonsMP"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/roboto"
-        android:shadowColor="#000000"
-        android:shadowDx="1.5"
-        android:shadowDy="1.3"
-        android:shadowRadius="1.6"
-        android:text="@string/monster_mp"
-        android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="@+id/txtMonsHP"
-        app:layout_constraintTop_toTopOf="@+id/txtHeroMP" />
-
-    <TextView
-        android:id="@+id/txtHeroHP"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/roboto"
-        android:shadowColor="#000000"
-        android:shadowDx="1.5"
-        android:shadowDy="1.3"
-        android:shadowRadius="1.6"
-        android:text="@string/character_hp"
-        android:textColor="@color/white"
-        app:layout_constraintStart_toStartOf="@+id/txtHeroName"
-        app:layout_constraintTop_toBottomOf="@+id/txtHeroDPS" />
-
-    <TextView
-        android:id="@+id/txtMonsHP"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/roboto"
-        android:shadowColor="#000000"
-        android:shadowDx="1.5"
-        android:shadowDy="1.3"
-        android:shadowRadius="1.6"
-        android:text="@string/monster_hp"
-        android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="@+id/txtMonsName"
-        app:layout_constraintTop_toTopOf="@+id/txtHeroHP" />
-
-    <TextView
-        android:id="@+id/txtHeroDPS"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/roboto"
-        android:shadowColor="#000000"
-        android:shadowDx="1.5"
-        android:shadowDy="1.3"
-        android:shadowRadius="1.6"
-        android:text="@string/hero_damage"
-        android:textColor="@color/white"
-        app:layout_constraintStart_toStartOf="@+id/txtHeroName"
-        app:layout_constraintTop_toBottomOf="@+id/txtHeroName" />
-
-    <TextView
-        android:id="@+id/txtMonsDPS"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/roboto"
-        android:shadowColor="#000000"
-        android:shadowDx="1.5"
-        android:shadowDy="1.3"
-        android:text="@string/monster_damage"
-        android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="@+id/txtMonsName"
-        app:layout_constraintTop_toTopOf="@+id/txtHeroDPS" />
-
-    <Button
-        android:id="@+id/btnNxtTurn"
-        android:layout_width="169dp"
-        android:layout_height="108dp"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/roboto"
-        android:text="@string/first_turn"
-        app:layout_constraintEnd_toStartOf="@+id/txtMonsName"
-        app:layout_constraintHorizontal_bias="0.541"
-        app:layout_constraintStart_toEndOf="@+id/txtHeroName"
-        app:layout_constraintTop_toTopOf="@+id/txtHeroName" />
-
-    <TextView
         android:id="@+id/txtCombatLog"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
         android:fontFamily="@font/roboto"
         android:shadowColor="#000000"
         android:shadowDx="1.5"
@@ -148,122 +18,292 @@
         android:shadowRadius="1.6"
         android:text="@string/combatlog"
         android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.499"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.086"
         tools:ignore="SpeakableTextPresentCheck,TextContrastCheck" />
 
-    <ImageButton
-        android:id="@+id/btnSkill1"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:layout_marginTop="20dp"
-        android:background="?android:attr/selectableItemBackground"
-        android:clickable="true"
-        android:focusable="true"
-
-        android:scaleType="fitXY"
-        android:text="@string/skill1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnSkill2"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toEndOf="@+id/txtHeroMP"
-        app:layout_constraintTop_toBottomOf="@+id/btnNxtTurn"
-        app:srcCompat="@drawable/skillicon1"
-        tools:ignore="SpeakableTextPresentCheck" />
-
-    <ImageButton
-        android:id="@+id/btnSkill2"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:background="?android:attr/selectableItemBackground"
-        android:clickable="false"
-        android:scaleType="fitXY"
-        android:text="@string/skill2"
-        app:layout_constraintEnd_toStartOf="@+id/btnSkill3"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/btnSkill1"
-        app:layout_constraintTop_toTopOf="@+id/btnSkill1"
-        app:srcCompat="@drawable/skillicon2"
-        tools:ignore="SpeakableTextPresentCheck" />
-
-    <ImageButton
-        android:id="@+id/btnSkill3"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:background="?android:attr/selectableItemBackground"
-        android:clickable="false"
-        android:scaleType="fitXY"
-        app:layout_constraintBottom_toBottomOf="@+id/btnSkill2"
-        app:layout_constraintEnd_toStartOf="@+id/btnSkill4"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/btnSkill2"
-        app:layout_constraintTop_toTopOf="@+id/btnSkill2"
-        app:srcCompat="@drawable/skillicon3"
-        tools:ignore="SpeakableTextPresentCheck" />
-
-    <ImageButton
-        android:id="@+id/btnSkill4"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:background="?android:attr/selectableItemBackground"
-        android:clickable="false"
-        android:scaleType="fitXY"
-        app:layout_constraintBottom_toBottomOf="@+id/btnSkill3"
-        app:layout_constraintEnd_toStartOf="@+id/txtMonsMP"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/btnSkill3"
-        app:layout_constraintTop_toTopOf="@+id/btnSkill3"
-        app:srcCompat="@drawable/skillicon4"
-        tools:ignore="SpeakableTextPresentCheck" />
-
-    <ProgressBar
-        android:id="@+id/hpBar"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="184dp"
-        android:layout_height="24dp"
-        android:layout_marginBottom="32dp"
-        android:background="@drawable/healthbaroverlay"
-        android:progress="100"
-        android:progressDrawable="@drawable/hp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="286dp"
+        android:layout_height="54dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.029"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="207dp"
-        android:layout_height="39dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginBottom="24dp"
+        <ProgressBar
+            android:id="@+id/heroMpBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="184dp"
+            android:layout_height="24dp"
+            android:background="@drawable/healthbaroverlay"
+            android:progress="100"
+            android:progressDrawable="@drawable/heromp"
+            app:layout_constraintEnd_toEndOf="@+id/heroHpBar"
+            app:layout_constraintStart_toStartOf="@+id/heroHpBar"
+            app:layout_constraintTop_toBottomOf="@+id/heroHpBar" />
+
+        <TextView
+            android:id="@+id/txtHeroMP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto"
+            android:shadowColor="#000000"
+            android:shadowDx="1.5"
+            android:shadowDy="1.3"
+            android:shadowRadius="1.6"
+            android:text="@string/character_mp"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="@+id/txtHeroHP"
+            app:layout_constraintStart_toEndOf="@+id/heroHpBar"
+            app:layout_constraintTop_toBottomOf="@+id/txtHeroHP" />
+
+        <ProgressBar
+            android:id="@+id/heroHpBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="184dp"
+            android:layout_height="24dp"
+            android:background="@drawable/healthbaroverlay"
+            android:progress="100"
+            android:progressDrawable="@drawable/herohp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/txtHeroHP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto"
+            android:shadowColor="#000000"
+            android:shadowDx="1.5"
+            android:shadowDy="1.3"
+            android:shadowRadius="1.6"
+            android:text="@string/character_hp"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toTopOf="@+id/heroMpBar"
+            app:layout_constraintStart_toEndOf="@+id/heroHpBar"
+            app:layout_constraintTop_toTopOf="@+id/heroHpBar" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="465dp"
+        android:layout_height="170dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/healthbaroverlay" />
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="114dp"
-        android:layout_height="109dp"
-        app:layout_constraintBottom_toTopOf="@+id/txtHeroName"
-        app:layout_constraintEnd_toEndOf="@+id/txtHeroMP"
-        app:layout_constraintStart_toStartOf="@+id/txtHeroMP"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/arbitervildredicon" />
+        app:layout_constraintVertical_bias="1.0">
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="114dp"
-        android:layout_height="109dp"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/txtMonsName"
-        app:layout_constraintEnd_toEndOf="@+id/txtMonsMP"
-        app:layout_constraintHorizontal_bias="0.605"
-        app:layout_constraintStart_toStartOf="@+id/txtMonsMP"
-        app:layout_constraintTop_toTopOf="@+id/imageView2"
-        app:srcCompat="@drawable/enotticon" />
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="190dp"
+            android:layout_height="122dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0"
+            app:srcCompat="@drawable/arbitervildred" />
+
+        <ImageButton
+            android:id="@+id/btnSkill4"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="false"
+            android:scaleType="fitXY"
+            app:layout_constraintBottom_toBottomOf="@+id/btnSkill3"
+            app:layout_constraintStart_toEndOf="@+id/btnSkill3"
+            app:layout_constraintTop_toTopOf="@+id/btnSkill3"
+            app:srcCompat="@drawable/skillicon4"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <ImageButton
+            android:id="@+id/btnSkill1"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:background="?android:attr/selectableItemBackground"
+
+            android:clickable="true"
+            android:contentDescription="TODO"
+            android:focusable="true"
+            android:scaleType="fitXY"
+            android:text="@string/skill1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView3"
+            app:srcCompat="@drawable/skillicon1"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <ImageButton
+            android:id="@+id/btnSkill2"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="false"
+            android:contentDescription="TODO"
+            android:scaleType="fitXY"
+            android:text="@string/skill2"
+            app:layout_constraintBottom_toBottomOf="@+id/btnSkill1"
+            app:layout_constraintStart_toEndOf="@+id/btnSkill1"
+            app:layout_constraintTop_toTopOf="@+id/btnSkill1"
+            app:srcCompat="@drawable/skillicon2"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <ImageButton
+            android:id="@+id/btnSkill3"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="false"
+            android:contentDescription="TODO"
+            android:scaleType="fitXY"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/btnSkill2"
+            app:layout_constraintTop_toTopOf="@+id/btnSkill2"
+            app:srcCompat="@drawable/skillicon3"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <TextView
+            android:id="@+id/txtHeroName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto"
+            android:shadowColor="#000000"
+            android:shadowDx="1.5"
+            android:shadowDy="1.3"
+            android:shadowRadius="1.6"
+            android:text="@string/my_character"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toTopOf="@+id/imageView3"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/txtHeroDPS"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/roboto"
+            android:shadowColor="#000000"
+            android:shadowDx="1.5"
+            android:shadowDy="1.3"
+            android:shadowRadius="1.6"
+            android:text="@string/hero_damage"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/txtHeroName"
+            app:layout_constraintStart_toEndOf="@+id/txtHeroName"
+            app:layout_constraintTop_toTopOf="@+id/txtHeroName"
+            app:layout_constraintVertical_bias="0.0" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="303dp"
+        android:layout_height="52dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ProgressBar
+            android:id="@+id/monsHpBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="184dp"
+            android:layout_height="24dp"
+            android:background="@drawable/healthbaroverlay"
+            android:progress="100"
+            android:progressDrawable="@drawable/herohp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txtMonsHP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto"
+            android:shadowColor="#000000"
+            android:shadowDx="1.5"
+            android:shadowDy="1.3"
+            android:shadowRadius="1.6"
+            android:text="@string/monster_hp"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/monsHpBar"
+            app:layout_constraintEnd_toStartOf="@+id/monsHpBar"
+            app:layout_constraintTop_toTopOf="@+id/monsHpBar" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="193dp"
+        android:layout_height="99dp"
+        android:layout_marginTop="84dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.21">
+
+        <Button
+            android:id="@+id/btnNxtTurn"
+            android:layout_width="119dp"
+            android:layout_height="75dp"
+            android:fontFamily="@font/roboto"
+            android:text="@string/next_round"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="237dp"
+        android:layout_height="163dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="173dp"
+            android:layout_height="130dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@drawable/enott" />
+
+        <TextView
+            android:id="@+id/txtMonsName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto"
+            android:shadowColor="#000000"
+            android:shadowDx="1.5"
+            android:shadowDy="1.3"
+            android:shadowRadius="1.6"
+            android:text="@string/monster_name"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toTopOf="@+id/imageView4"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/txtMonsDPS"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="12dp"
+            android:fontFamily="@font/roboto"
+            android:shadowColor="#000000"
+            android:shadowDx="1.5"
+            android:shadowDy="1.3"
+            android:text="@string/monster_damage"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/txtMonsName"
+            app:layout_constraintEnd_toStartOf="@+id/txtMonsName"
+            app:layout_constraintTop_toTopOf="@+id/txtMonsName"
+            app:layout_constraintVertical_bias="0.0" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

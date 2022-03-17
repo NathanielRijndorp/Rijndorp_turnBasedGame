@@ -15,10 +15,16 @@
     <color name="rainbow5">#B5EAD7</color>
     <color name="rainbow6">#C7CEEA</color>
 
-    <color name="fullhp">#0aff0a</color>
-    <color name="seventyhp">#80ff00</color>
-    <color name="fiftyhp">#ffff00</color>
-    <color name="twentyfivehp">#ff8000</color>
-    <color name="lowhp">#ff0000</color>
+    <color name="herofullhp">#0aff0a</color>
+    <color name="heroseventyhp">#80ff00</color>
+    <color name="herofiftyhp">#ffff00</color>
+    <color name="herotwentyfivehp">#ff8000</color>
+    <color name="herolowhp">#ff0000</color>
+
+    <color name="herofullmp">#0F52BA</color>
+    <color name="heroseventymp">#0085FF</color>
+    <color name="herofiftymp">#00A0FF</color>
+    <color name="herotwentyfivemp">#6BC8FF</color>
+    <color name="herolowmp">#9DDBFF</color>
 
 </resources>
