@@ -7,7 +7,7 @@
     <string name="combatlog" />
     <string name="my_character">My Character</string>
     <string name="skill1">skill1</string>
-    <string name="first_turn">First Turn</string>
+    <string name="next_round">Next Round</string>
     <string name="character_hp">Character HP</string>
     <string name="monster_hp">Monster HP</string>
     <string name="hero_damage">Hero Damage</string>
